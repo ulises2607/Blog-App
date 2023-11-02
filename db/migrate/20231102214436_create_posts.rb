@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreatePosts < ActiveRecord::Migration[7.1]
   def change
     create_table :posts do |t|
@@ -7,10 +9,8 @@ class CreatePosts < ActiveRecord::Migration[7.1]
       t.integer :comments_counter
       t.integer :likes_counter
       t.timestamps
-
     end
 
     add_foreign_key :posts, :users, column: :author_id
-
   end
 end
