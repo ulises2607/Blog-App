@@ -3,6 +3,9 @@ class Post < ActiveRecord::Base
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
 
+  validates :title, presence: true, length: { maximum: 250 }
+  validates :text, presence: true, length: { maximum: 5000 }
+
   after_create :update_post_counter # Cambiado a after_create
 
   def five_recent_comments
@@ -12,7 +15,6 @@ class Post < ActiveRecord::Base
   private
 
   def update_post_counter
-    Rails.logger.debug("Ejecutando update_post_counter en Post #{user.id}, user.posts.count: #{user.posts.count}")
     user.update(post_counter: user.posts.count)
   end
 end

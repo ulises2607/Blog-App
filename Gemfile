@@ -65,3 +65,8 @@ group :test do
   gem 'capybara'
   gem 'selenium-webdriver'
 end
+
+# Use rspec for tests
+group :development, :test do  
+  gem 'rspec-rails'
+end
