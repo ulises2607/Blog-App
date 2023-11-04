@@ -27,6 +27,44 @@ RSpec.describe Post, type: :model do
     expect(post).to_not be_valid
   end
 
+  it 'is valid with valid attributes' do
+    user = User.create(name: 'User Name', photo: 'user.jpg', bio: 'Bio text')
+    post = Post.new(
+      user:,
+      title: 'Test Title',
+      text: 'Test Text',
+      comments_counter: 0, # You can set this to any non-negative value
+      likes_counter: 0 # You can set this to any non-negative value
+    )
+    expect(post).to be_valid
+  end
+
+  it 'is not valid with a negative comments counter' do
+    user = User.create(name: 'User Name', photo: 'user.jpg', bio: 'Bio text')
+    post = Post.new(
+      user:,
+      title: 'Test Title',
+      text: 'Test Text',
+      comments_counter: -1,
+      likes_counter: 0
+    )
+    expect(post).not_to be_valid
+    expect(post.errors[:comments_counter]).to include('must be greater than or equal to 0')
+  end
+
+  it 'is not valid with a negative likes counter' do
+    user = User.create(name: 'User Name', photo: 'user.jpg', bio: 'Bio text')
+    post = Post.new(
+      user:,
+      title: 'Test Title',
+      text: 'Test Text',
+      comments_counter: 0,
+      likes_counter: -1
+    )
+    expect(post).not_to be_valid
+    expect(post.errors[:likes_counter]).to include('must be greater than or equal to 0')
+  end
+
   it 'has five recent comments' do
     user = User.create(name: 'Alice', photo: 'https://unsplash.com/photos/AlicePhoto', bio: 'Bio for Alice')
     post = Post.create(title: 'Test Post', text: 'This is a test post', user:)
