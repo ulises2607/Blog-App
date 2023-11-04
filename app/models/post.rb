@@ -1,5 +1,5 @@
 class Post < ActiveRecord::Base
-  belongs_to :user, class_name: "User", foreign_key: "author_id"
+  belongs_to :user, class_name: 'User', foreign_key: 'author_id'
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
 
@@ -15,5 +15,4 @@ class Post < ActiveRecord::Base
     Rails.logger.debug("Ejecutando update_post_counter en Post #{user.id}, user.posts.count: #{user.posts.count}")
     user.update(post_counter: user.posts.count)
   end
-  
 end
