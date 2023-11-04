@@ -6,7 +6,7 @@ class Post < ActiveRecord::Base
   validates :title, presence: true, length: { maximum: 250 }
   validates :text, presence: true, length: { maximum: 5000 }
 
-  after_create :update_post_counter # Cambiado a after_create
+  after_create :update_post_counter
 
   def five_recent_comments
     comments.order(created_at: :desc).limit(5)
