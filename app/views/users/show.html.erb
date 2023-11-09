@@ -1,0 +1,48 @@
+
+<div class="img-user-container" >
+                imagen
+</div>
+<div class="info-user-container" >
+    <div>
+        <h2>
+            <%= @user.name%>
+        </h2>
+    </div>
+    <div>
+        <p>
+            Number of posts: <%= @user.post_counter%>
+        </p>
+    </div>
+</div>
+<div>
+    <h3>
+        Bio
+    </h3>
+    <p>
+        <%= @user.bio%>
+    </p>
+</div>
+<div>
+    <h3>
+        Posts
+    </h3>
+    <ul>
+        <% @user.posts.each do |post| %>
+            <li>
+                <h4> <%= post.title%> </h4>
+                <p>
+                <%= post.text %>
+                </p>
+                <p> Comments: <%= post.comments_counter %> - Likes: <%= post.likes_counter%> </p>
+            </li>
+        <% end %>
+    </ul>
+
+    <div>
+        <button> See all posts 
+            
+        </button>
+
+    </div>
+
+</div>
