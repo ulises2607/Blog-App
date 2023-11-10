@@ -30,5 +30,13 @@ RSpec.describe 'Users', type: :request do
       get user_path(user.id)
       expect(response).to render_template(:show)
     end
+
+    it 'includes correct placeholder text in the response body' do
+      user = User.create(name: 'Tom', photo: 'https://randomuser.me/api/portraits/med/men/75.jpg',
+                         bio: 'Teacher from Mexico.')
+      get user_path(user.id)
+      expect(response.body).to include('Teacher from Mexico.')
+    end
+
   end
 end
