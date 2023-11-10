@@ -37,6 +37,5 @@ RSpec.describe 'Users', type: :request do
       get user_path(user.id)
       expect(response.body).to include('Teacher from Mexico.')
     end
-
   end
 end
