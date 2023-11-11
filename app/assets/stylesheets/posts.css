@@ -1,0 +1,8 @@
+.comments-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  gap: 1rem;
+  border: 3px solid black;
+}
