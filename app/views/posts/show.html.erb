@@ -21,6 +21,14 @@
      </ul>
 </div>
 
+<div class="btn-post-container">
+    <button class="btn-pagination">
+        <%= link_to "Back", user_posts_path(@user) %>
+    </button>
+</div>
+
+
+
 <% if @next_post.present? %>
   <div class="btn-post-container">
     <button class="btn-pagination">
