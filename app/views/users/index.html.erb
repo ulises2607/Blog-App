@@ -1,7 +1,7 @@
-<h1> List of Users </h1>
-<ul>
+<h1 class="user-page-title"> List of Users </h1>
+<ul class="user-list">
     <% @users.each do |user| %>
-        <li>
+        <li class="list-item">
             <div class="img-user-container" >
                 imagen
             </div>
@@ -9,12 +9,10 @@
                 <div>
                     <%= link_to user.name, user_path(user) %>
                 </div>
-                <div>
-                    <p>
-                        Number of posts: <%= user.post_counter%>
-                    </p>
-                </div>
-            </div>
+                <p class="post-number">
+                    Number of posts: <%= user.post_counter%>
+                </p>
+            </div> 
         </li>
 
     <% end %>

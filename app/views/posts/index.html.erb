@@ -1,15 +1,54 @@
-<h1> Post list for a given user </h1>
+<div class="list-item">
+    <div class="img-user-container" >
+                imagen
+    </div>
+    <div class="info-user-container" >
+        <div>
+            <h2>
+                <%= @user.name%>
+            </h2>
+        </div>
+        <p class="post-number">
+            Number of posts: <%= @user.post_counter%>
+        </p>
+    </div>
+</div>
 
 <% @posts.each do |post| %>
     <div class="post-container">
-        <div class="post-title">
-            <h2> <%= post.title %> </h2>
+        <div class="post-item">
+            <div class="post-title">
+                <h2> <%= post.title %> </h2>
+            </div>
+            <div class="post-text">
+                <p> <%= post.text %> </p>
+            </div>
+            <div class="post-counters">
+                <p> Comments: <%= post.comments_counter %> - Likes: <%= post.likes_counter%> </p>
+            </div>
         </div>
-        <div class="post-text">
-            <p> <%= post.text %> </p>
-        </div>
-        <div class="post-info">
-            <p> Comments: <%= post.comments_counter %> - Likes: <%= post.likes_counter%> </p>
+        
+        <div>
+            <ul class="comments-list">
+                <% post.five_recent_comments.each do |comment|%>
+                    <li>
+                    <p>
+                        Username: <%= comment.user.name %> Comment: <%= comment.text %>
+                    </p>
+                    </li>
+                <% end %>
+            </ul>
+            
         </div>
     </div>
 <% end %>
+
+<div class="btn-post-container">
+    <% if @posts.present? %>
+      <button class="btn-pagination">
+          <%= link_to "Pagination", user_post_path(@user, @posts.first) %>
+      </button>
+    <% end %>
+</div>
+
+
