@@ -11,14 +11,14 @@
         <p> Comments: <%= @post.comments_counter %> - Likes: <%= @post.likes_counter %></p>
     </div>
     <ul class="comments-list">
-                <% @post.comments.first(10).each do |comment|%>
-                    <li>
-                        <p>
-                            Username: <%= comment.user.name %>, Comment: <%= comment.text %>
-                        </p>
-                    </li>
-                <% end %>
-            </ul>
+        <% @post.comments.first(10).each do |comment|%>
+            <li>
+                <p>
+                    Username: <%= comment.user.name %>, Comment: <%= comment.text %>
+                </p>
+            </li>
+        <% end %>
+     </ul>
 </div>
 
 <% if @next_post.present? %>
