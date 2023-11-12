@@ -1,0 +1,18 @@
+<div class="">
+  <h2>Create new post</h2>
+  <%= form_with model: @post, url: user_posts_path(@user), local: true do |form| %>
+    <div>
+      <%= form.label :title%>
+      <%= form.text_field :title%>
+    </div>
+    <div class="mb-4">
+      <%= form.label :text %>
+      <%= form.text_area :text %>
+    </div>
+    <div>
+      <%= form.submit  %>
+    </div>
+  <% end %>
+</div>
+
+<%= link_to 'Back', user_posts_path(@user) %>

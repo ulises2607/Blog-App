@@ -10,6 +10,23 @@
     <div class="post-info">
         <p> Comments: <%= @post.comments_counter %> - Likes: <%= @post.likes_counter %></p>
     </div>
+
+    <div class="btn-post-container">
+        <button class="btn-pagination">
+            <%= link_to "Create Comment", new_user_post_comment_path(@user, @post) %>
+        </button>
+
+        <div>
+            <%= form_with model: @like, url: user_post_likes_path(@user, @post) do |form| %>
+  <%= form.submit "Like"%>
+<% end %>
+
+        </div>
+
+    </div>
+
+</div>
+
     <ul class="comments-list">
         <% @post.comments.first(10).each do |comment|%>
             <li>
@@ -20,6 +37,22 @@
         <% end %>
      </ul>
 </div>
+
+<div class="btn-post-container">
+    <button class="btn-pagination">
+        <%= link_to "Back", user_posts_path(@user) %>
+    </button>
+</div>
+
+<% if @previous_post.present? %>
+  <div class="btn-post-container">
+    <button class="btn-pagination">
+      <%= link_to "Previous Post", user_post_path(@user, @previous_post) %>
+    </button>
+  </div>
+<% end %>
+
+
 
 <% if @next_post.present? %>
   <div class="btn-post-container">
