@@ -16,6 +16,14 @@
             <%= link_to "Create Comment", new_user_post_comment_path(@user, @post) %>
         </button>
 
+        <div>
+            <%= form_with model: @like, url: user_post_likes_path(@user, @post) do |form| %>
+  <%= form.submit "Like"%>
+<% end %>
+
+        </div>
+
+    </div>
 
 </div>
 
