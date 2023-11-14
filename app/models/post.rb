@@ -11,7 +11,7 @@ class Post < ActiveRecord::Base
   after_create :update_post_counter
 
   def five_recent_comments
-    comments.order(created_at: :desc).limit(5)
+    comments.includes(:user).order(created_at: :desc).limit(5)
   end
 
   private

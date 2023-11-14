@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   def index
     if params[:user_id].present?
       @user = User.find(params[:user_id])
-      @posts = @user.posts
+      @posts = @user.posts.includes(:comments).where(author_id: @user.id)
     else
       @posts = Post.all
     end
