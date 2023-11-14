@@ -22,13 +22,7 @@
   gap: 3rem;
 }
 
-.img-user-container {
-  width: 20%;
-  height: 4rem;
-  display: flex;
-  padding: 2rem;
-  border: 3px solid black;
-}
+
 
 .info-user-container {
   display: flex;

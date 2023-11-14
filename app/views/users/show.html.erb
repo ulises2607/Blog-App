@@ -1,6 +1,10 @@
 <div class="list-item">
-    <div class="img-user-container" >
-        <img src= <%= @user.photo%>>
+    <div class="img-user-container">
+        <% if @user.photo.present? %>
+            <img src="<%= @user.photo %>" alt="User Photo">
+        <% else %>
+            <p>No photo available</p>
+        <% end %>
     </div>
     <div class="info-user-container" >
         <div>
