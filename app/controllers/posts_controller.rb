@@ -2,11 +2,17 @@ class PostsController < ApplicationController
   before_action :find_user, only: %i[index show]
 
   def index
+    per_page = 10
+    page = params[:page] || 1
+
     if params[:user_id].present?
       @user = User.find(params[:user_id])
-      @posts = @user.posts.includes(:comments).where(author_id: @user.id)
+      @posts = @user.posts.includes(:comments).where(author_id: @user.id).paginate(page: page, per_page: per_page)
+
+      @total_pages = (@posts.total_entries.to_f / per_page).ceil
+      @author = @posts.first.user unless @posts.empty?
     else
-      @posts = Post.all
+      @posts = Post.paginate(page: page, per_page: per_page)
     end
   end
 

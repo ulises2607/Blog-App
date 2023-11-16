@@ -43,13 +43,13 @@
     </a>
 <% end %>
 
-<div class="btn-post-container">
-    <% if @posts.present? %>
-      <button class="btn-pagination">
-          <%= link_to "Pagination", user_post_path(@user, @posts.first) %>
-      </button>
-    <% end %>
-</div>
+<nav>
+    <ul>
+        <% (1..@total_pages).each do |page| %>
+            <li class="page-item"><a class="" href="/users/<%= @user.id %>/posts?page=<%= page %>"><%= page %></a></li>
+        <% end %>
+    </ul>
+</nav>
 
 <div>
     <a href="/users/<%=@user.id%>/posts/new">Create Post</a>

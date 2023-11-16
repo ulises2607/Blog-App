@@ -67,3 +67,6 @@ group :test do
   gem 'capybara'
   gem 'selenium-webdriver'
 end
+
+# Use Active Record as the ORM [https://guides.rubyonrails.org/active_record_basics.html]
+gem 'will_paginate'
