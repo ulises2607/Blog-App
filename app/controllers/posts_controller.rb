@@ -12,8 +12,6 @@ class PostsController < ApplicationController
 
   def show
     if params[:id] == 'new'
-      # Redirigir o manejar la lógica para la creación de un nuevo post
-      # Por ejemplo, podrías redirigir a la acción 'new' en lugar de renderizar 'show'
       redirect_to new_user_post_path(@user)
     else
       @post = @user.posts.find_by(id: params[:id])
