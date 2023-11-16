@@ -7,12 +7,16 @@ class PostsController < ApplicationController
 
     if params[:user_id].present?
       @user = User.find(params[:user_id])
-      @posts = @user.posts.includes(:comments).where(author_id: @user.id).paginate(page: page, per_page: per_page)
+      @posts = @user.posts
+      .includes(:comments)
+      .where(author_id: @user.id)
+      .order(created_at: :asc)
+      .paginate(page: page, per_page: per_page)
 
       @total_pages = (@posts.total_entries.to_f / per_page).ceil
       @author = @posts.first.user unless @posts.empty?
     else
-      @posts = Post.paginate(page: page, per_page: per_page)
+      @posts = Post.order(created_at: :desc).paginate(page: page, per_page: per_page)
     end
   end
 
@@ -41,7 +45,7 @@ class PostsController < ApplicationController
     @user = current_user
     @post = @user.posts.build(post_params)
     if @post.save
-      redirect_to user_post_path(@user, @post)
+      redirect_to user_path(@user, @post)
     else
       render :new
     end

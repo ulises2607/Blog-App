@@ -45,9 +45,7 @@
 
 <nav>
     <ul>
-        <% (1..@total_pages).each do |page| %>
-            <li class="page-item"><a class="" href="/users/<%= @user.id %>/posts?page=<%= page %>"><%= page %></a></li>
-        <% end %>
+        <%= will_paginate @posts %>
     </ul>
 </nav>
 
