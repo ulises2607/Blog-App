@@ -17,23 +17,23 @@ RSpec.feature 'User show page', type: :feature do
 
   scenario 'I can see the number of posts the user has written' do
     visit user_path(@user)
-    expect(page).to have_content('Number of posts: 25')
+    expect(page).to have_content("Number of posts: #{@user[:post_counter]}")
   end
 
   scenario 'I can see the user\'s bio' do
     visit user_path(@user)
-    expect(page).to have_css('.bio-container p', text: 'Brasilian student')
+    expect(page).to have_css('.bio-container p', text: @user.bio)
   end
 
   scenario 'When I click a user\'s post, it redirects me to that post\'s show page' do
     visit user_path(@user)
     first('.post-item a').click
-    expect(page.current_path).to include('/users/1/posts/1')
+    expect(page).to have_current_path(user_post_path(@user, @user.posts.first))
   end
 
   scenario 'When I click to see all posts, it redirects me to the user\'s post\'s index page' do
     visit user_path(@user)
     click_link 'See all posts'
-    expect(page).to have_current_path('/users/1/posts')
+    expect(page).to have_current_path(user_posts_path(@user))
   end
 end

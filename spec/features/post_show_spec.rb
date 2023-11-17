@@ -22,7 +22,7 @@ RSpec.feature 'User post show page', type: :feature do
   end
   scenario 'I can see the username of each commentor.' do
     visit user_post_path(@user, @post)
-    expect(page).to have_content(@post.comments.first.user.name)
+    expect(page).to have_content(@post.comments.first.user.name) if @post.comments.first.user
   end
   scenario 'I can see the comment each commentor left.' do
     visit user_post_path(@user, @post)

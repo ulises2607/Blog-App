@@ -1,27 +1,27 @@
 require 'rails_helper'
-RSpec.feature 'User index page', type: :feature do
-  scenario 'I can see the username of all other users' do
-    visit users_path
-    # Verify that the usernames are displayed on the users index page
-    expect(page).to have_content('Tom')
-    expect(page).to have_content('Silvia')
+RSpec.feature 'Post index page', type: :feature do
+  before do
+    @user = User.find_by(name: 'Tom')
   end
-  scenario 'I can see the profile picture for each user' do
-    visit users_path
-    # Verify that the profile pictures are displayed on the users index page
-    expect(page).to have_css('.img-user-container img', count: User.count)
+
+  scenario 'I can see how many comments a post has.' do
+    visit user_posts_path(@user)
+    expect(page).to have_content(@user.posts.first.comments_counter)
   end
-  scenario 'I can see the number of posts each user has written' do
-    visit users_path
-    # Verify that the number of posts for each user is displayed on the users index page
-    expect(page).to have_content('Number of posts: 25') # Adjust the number based on your specific data
-    expect(page).to have_content('Number of posts: 8') # Adjust the number based on your specific data
+
+  scenario 'I can see how many likes a post has.' do
+    visit user_posts_path(@user)
+    expect(page).to have_content(@user.posts.first.likes_counter)
   end
-  scenario 'When I click on a user, I am redirected to that user\'s show page' do
-    visit users_path
-    # Click on the link for the first user
-    click_link 'Tom'
-    # Verify that it redirects to the user's show page correctly
-    expect(page).to have_current_path(user_path(User.find_by(name: 'Tom')))
+
+  scenario 'I can see a section for pagination if there are more posts than fit on the view.' do
+    visit user_posts_path(@user)
+    expect(page).to have_css('.pagination')
+  end
+
+  scenario 'When I click on a post, I am redirected to that post\'s show page.' do
+    visit user_posts_path(@user)
+    first('.post-container').click
+    expect(page).to have_current_path(user_post_path(@user, @user.posts.first))
   end
 end
