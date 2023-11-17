@@ -8,15 +8,15 @@ class PostsController < ApplicationController
     if params[:user_id].present?
       @user = User.find(params[:user_id])
       @posts = @user.posts
-      .includes(:comments)
-      .where(author_id: @user.id)
-      .order(created_at: :asc)
-      .paginate(page: page, per_page: per_page)
+        .includes(:comments)
+        .where(author_id: @user.id)
+        .order(created_at: :asc)
+        .paginate(page:, per_page:)
 
       @total_pages = (@posts.total_entries.to_f / per_page).ceil
       @author = @posts.first.user unless @posts.empty?
     else
-      @posts = Post.order(created_at: :desc).paginate(page: page, per_page: per_page)
+      @posts = Post.order(created_at: :desc).paginate(page:, per_page:)
     end
   end
 

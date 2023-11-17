@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.feature 'User index page', type: :feature do
-
   scenario 'I can see the username of all other users' do
     visit users_path
 
@@ -22,7 +21,7 @@ RSpec.feature 'User index page', type: :feature do
 
     # Verify that the number of posts for each user is displayed on the users index page
     expect(page).to have_content('Number of posts: 25') # Adjust the number based on your specific data
-    expect(page).to have_content('Number of posts: 8')  # Adjust the number based on your specific data
+    expect(page).to have_content('Number of posts: 8') # Adjust the number based on your specific data
   end
 
   scenario 'When I click on a user, I am redirected to that user\'s show page' do
