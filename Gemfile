@@ -49,6 +49,7 @@ group :development, :test do
   gem 'debug', platforms: %i[mri windows]
   gem 'rails-controller-testing'
   gem 'rspec-rails'
+  gem 'factory_bot_rails'
 end
 
 group :development do
@@ -70,3 +71,6 @@ end
 
 # Use Active Record as the ORM [https://guides.rubyonrails.org/active_record_basics.html]
 gem 'will_paginate'
+
+
+gem 'faker'

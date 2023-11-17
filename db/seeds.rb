@@ -31,3 +31,22 @@ User.create(name: "Silvia", photo: "https://randomuser.me/api/portraits/women/72
     )
   end
 
+  Post.all.each do |post|
+    # Generate a random number of comments (between 0 and 5)
+    rand(6).times do
+      Comment.create(
+        user_id: rand(1..2), # Randomly assign a user_id
+        post_id: post.id,
+        text: Faker::Lorem.sentence
+      )
+    end
+  
+    # Generate a random number of likes (between 0 and 5)
+    rand(6).times do
+      Like.create(
+        user_id: rand(1..2), # Randomly assign a user_id
+        post_id: post.id
+      )
+    end
+  end
+

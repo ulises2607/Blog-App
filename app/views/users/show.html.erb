@@ -28,13 +28,17 @@
 <div class="post-container">
     <ul class="post-list">
         <% @posts.each do |post| %>
+            
             <li class="post-item">
-                <h4> <%= post.title%> </h4>
-                <p>
-                <%= post.text %>
-                </p>
-                <p class="post-counters"> Comments: <%= post.comments_counter %> - Likes: <%= post.likes_counter%> </p>
+                <a href="<%= user_post_path(@user, post) %>" >
+                    <h4> <%= post.title%> </h4>
+                    <p>
+                    <%= post.text %>
+                    </p>
+                    <p class="post-counters"> Comments: <%= post.comments_counter %> - Likes: <%= post.likes_counter%> </p>
+                </a>
             </li>
+            
         <% end %>
     </ul>
 
