@@ -47,6 +47,7 @@ gem 'bootsnap', require: false
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri windows]
+  gem 'factory_bot_rails'
   gem 'rails-controller-testing'
   gem 'rspec-rails'
 end
@@ -67,3 +68,8 @@ group :test do
   gem 'capybara'
   gem 'selenium-webdriver'
 end
+
+# Use Active Record as the ORM [https://guides.rubyonrails.org/active_record_basics.html]
+gem 'will_paginate'
+
+gem 'faker'

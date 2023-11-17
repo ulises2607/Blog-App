@@ -15,7 +15,7 @@
 </div>
 
 <% @posts.each do |post| %>
-    <div class="post-container">
+    <a href="<%= user_post_path(@user, post) %>" class="post-container">
         <div class="post-item">
             <div class="post-title">
                 <h2> Post #<%= post.id %> - <%= post.title %> </h2>
@@ -40,16 +40,14 @@
             </ul>
             
         </div>
-    </div>
+    </a>
 <% end %>
 
-<div class="btn-post-container">
-    <% if @posts.present? %>
-      <button class="btn-pagination">
-          <%= link_to "Pagination", user_post_path(@user, @posts.first) %>
-      </button>
-    <% end %>
-</div>
+<nav>
+    <ul>
+        <%= will_paginate @posts %>
+    </ul>
+</nav>
 
 <div>
     <a href="/users/<%=@user.id%>/posts/new">Create Post</a>

@@ -2,18 +2,26 @@ class PostsController < ApplicationController
   before_action :find_user, only: %i[index show]
 
   def index
+    per_page = 10
+    page = params[:page] || 1
+
     if params[:user_id].present?
       @user = User.find(params[:user_id])
       @posts = @user.posts
+        .includes(:comments)
+        .where(author_id: @user.id)
+        .order(created_at: :asc)
+        .paginate(page:, per_page:)
+
+      @total_pages = (@posts.total_entries.to_f / per_page).ceil
+      @author = @posts.first.user unless @posts.empty?
     else
-      @posts = Post.all
+      @posts = Post.order(created_at: :desc).paginate(page:, per_page:)
     end
   end
 
   def show
     if params[:id] == 'new'
-      # Redirigir o manejar la lógica para la creación de un nuevo post
-      # Por ejemplo, podrías redirigir a la acción 'new' en lugar de renderizar 'show'
       redirect_to new_user_post_path(@user)
     else
       @post = @user.posts.find_by(id: params[:id])
@@ -37,7 +45,7 @@ class PostsController < ApplicationController
     @user = current_user
     @post = @user.posts.build(post_params)
     if @post.save
-      redirect_to user_post_path(@user, @post)
+      redirect_to user_path(@user, @post)
     else
       render :new
     end
