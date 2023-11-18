@@ -20,7 +20,7 @@
 }
 
 body {
-  width: 80%;
+  width: 100%;
   padding: 2rem;
 }
 
@@ -31,6 +31,13 @@ a {
 
 img {
   width: 7rem;
+}
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100vh;
 }
 
 .custom-input {
@@ -81,13 +88,11 @@ img {
   font-size: 24px;
   color: #333;
   margin-bottom: 20px;
-
-  /* Add more styles as needed */
 }
 
 /* Styles for the entire form */
 .custom-form {
-  max-width: 400px; /* Adjust the maximum width as needed */
+  max-width: 400px;
   margin: 0 auto;
 }
 
@@ -99,8 +104,6 @@ img {
 .custom-form label {
   display: block;
   margin-bottom: 5px;
-
-  /* Add more label styles as needed */
 }
 
 .custom-form .form-input {
@@ -108,8 +111,6 @@ img {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
-
-  /* Add more input styles as needed */
 }
 
 /* Styles for form actions (submit button) */
@@ -124,6 +125,4 @@ img {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-
-  /* Add more submit button styles as needed */
 }
