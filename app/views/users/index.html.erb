@@ -1,3 +1,18 @@
+<nav>
+    <ul class="nav-list">
+        <li>
+         <% if user_signed_in? %>
+            <%= form_with(url: destroy_user_session_path, method: :delete, local: false) do |form| %>
+                <button type="submit" class="btn btn-outline btn-error">
+                Logout
+                </button>
+        <% end %>
+        <% else %>
+            <%= link_to "Login", new_user_session_path, class: "btn btn-outline btn-primary" %>
+        <% end %>
+        </li>
+    </ul>
+</nav>
 <h1 class="user-page-title"> List of Users </h1>
 <ul class="user-list">
     <% @users.each do |user| %>
@@ -12,9 +27,7 @@
                 <p class="post-number">
                     Number of posts: <%= user.post_counter%>
                 </p>
-            </div> 
+            </div>
         </li>
-
     <% end %>
-
 </ul>
