@@ -37,7 +37,14 @@
                     </p>
                     <p class="post-counters"> Comments: <%= post.comments_counter %> - Likes: <%= post.likes_counter%> </p>
                 </a>
+                 <% if can? :destroy, post %>
+                    <%= form_with(url: user_post_path(@user, post), method: :delete, local: true) do |form| %>
+                    <%= form.submit 'Delete', class: 'btn btn-outline' %>
+                    <% end %>
+                <% end %>
+                
             </li>
+           
             
         <% end %>
     </ul>
@@ -50,3 +57,20 @@
     </div>
 
 </div>
+
+
+<footer>
+    <ul class="nav-list">
+        <li>
+         <% if user_signed_in? %>
+            <%= form_with(url: destroy_user_session_path, method: :delete, local: false) do |form| %>
+                <button type="submit" class="btn btn-outline btn-error">
+                Logout
+                </button>
+        <% end %>
+        <% else %>
+            <%= link_to "Login", new_user_session_path, class: "btn btn-outline btn-primary" %>
+        <% end %>
+        </li>
+    </ul>
+</footer>

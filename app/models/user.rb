@@ -18,4 +18,9 @@ class User < ActiveRecord::Base
   def fist_three_posts
     posts.order(created_at: :asc).limit(3)
   end
+
+  def admin?
+    role == 'admin'
+  end
+
 end

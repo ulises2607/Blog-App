@@ -10,12 +10,10 @@ class Ability
       can :manage, :all
     else user.role == 'member'
       can :read, :all
-      can :create, Comment
-      can :update, Comment, author_id: user.id
-      can :create, Like
-      can :create, Post
-      can :update, Post, author_id: user.id
+      can %i[update destroy create], Post, author_id: user.id
+      can %i[update destroy create], Comment, user_id: user.id
     end
+
 
   end
 end
