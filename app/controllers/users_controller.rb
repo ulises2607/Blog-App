@@ -13,6 +13,4 @@ class UsersController < ApplicationController
     @user = User.find_by(id: params[:id])
     @posts = @user.posts.order(created_at: :asc)
   end
-
-
 end
