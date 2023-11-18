@@ -82,6 +82,7 @@ img {
   font-size: 24px;
   color: #333;
   margin-bottom: 20px;
+
   /* Add more styles as needed */
 }
 
@@ -99,6 +100,7 @@ img {
 .custom-form label {
   display: block;
   margin-bottom: 5px;
+
   /* Add more label styles as needed */
 }
 
@@ -107,6 +109,7 @@ img {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
+
   /* Add more input styles as needed */
 }
 
@@ -122,5 +125,6 @@ img {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+
   /* Add more submit button styles as needed */
 }
