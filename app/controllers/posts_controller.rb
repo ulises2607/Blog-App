@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :find_user, only: %i[index show]
+  load_and_authorize_resource
 
   def index
     per_page = 10
@@ -49,6 +50,13 @@ class PostsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def destroy
+    @user = current_user
+    @post = @user.posts.find_by(id: params[:id])
+    @post.destroy
+    redirect_to user_path(@user), notice: 'Post was successfully deleted.'
   end
 
   def post_params
