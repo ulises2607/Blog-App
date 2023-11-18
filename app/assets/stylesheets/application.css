@@ -127,7 +127,7 @@ img {
   cursor: pointer;
 }
 
-post-container {
+.post-container {
   background-color: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   margin: 20px;
@@ -157,7 +157,7 @@ post-container {
 }
 
 .btn-pagination button {
-  background-color: #3498DB;
+  background-color: #3498db;
   color: #fff;
   padding: 10px 20px;
   border: none;
@@ -167,7 +167,7 @@ post-container {
 }
 
 .btn-pagination button:hover {
-  background-color: #217DBB;
+  background-color: #217dbb;
 }
 
 .comments-list {
@@ -186,11 +186,11 @@ post-container {
 
 .btn-outline {
   background-color: #fff;
-  border: 1px solid #3498DB;
-  color: #3498DB;
+  border: 1px solid #3498db;
+  color: #3498db;
 }
 
 .btn-outline:hover {
-  background-color: #3498DB;
+  background-color: #3498db;
   color: #fff;
 }
