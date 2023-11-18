@@ -126,3 +126,71 @@ img {
   border-radius: 5px;
   cursor: pointer;
 }
+
+post-container {
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin: 20px;
+  padding: 20px;
+}
+
+.post-title {
+  border-bottom: 2px solid #ddd;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+}
+
+.post-title h2 {
+  color: #333;
+}
+
+.post-text p {
+  color: #555;
+}
+
+.post-info p {
+  color: #777;
+}
+
+.btn-post-container {
+  margin-top: 15px;
+}
+
+.btn-pagination button {
+  background-color: #3498DB;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.btn-pagination button:hover {
+  background-color: #217DBB;
+}
+
+.comments-list {
+  list-style: none;
+  padding: 0;
+}
+
+.comments-list li {
+  border-bottom: 1px solid #ddd;
+  padding: 10px 0;
+}
+
+.comments-list p {
+  color: #555;
+}
+
+.btn-outline {
+  background-color: #fff;
+  border: 1px solid #3498DB;
+  color: #3498DB;
+}
+
+.btn-outline:hover {
+  background-color: #3498DB;
+  color: #fff;
+}
