@@ -2,6 +2,10 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
 
   def index
+    authorize! :index, User
+
+    redirect_to user_path(current_user) if current_user && !current_user.admin?
+
     @users = User.includes(:posts).all
   end
 
