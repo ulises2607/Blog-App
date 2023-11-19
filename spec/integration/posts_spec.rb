@@ -1,3 +1,5 @@
+require 'rswag/specs'
+
 describe 'Posts API', type: :request do
     # Index Test
     path '/users/{user_id}/posts' do

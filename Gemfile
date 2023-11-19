@@ -26,10 +26,6 @@ gem 'stimulus-rails'
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem 'jbuilder'
 
-# RSwag
-gem 'rswag-api'
-gem 'rswag-ui'
-
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
 
@@ -54,6 +50,10 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'rails-controller-testing'
   gem 'rspec-rails'
+  gem 'rswag', '~> 2.11'
+  gem 'rswag-specs'
+  gem 'rswag-api'
+  gem 'rswag-ui'
 end
 
 group :development do

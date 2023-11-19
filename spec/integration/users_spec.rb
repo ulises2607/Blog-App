@@ -1,3 +1,5 @@
+require 'rswag/specs'
+
 describe 'Users API', type: :request do
     # Index Test
     path '/users' do

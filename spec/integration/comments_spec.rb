@@ -1,3 +1,5 @@
+require 'rswag/specs'
+
 describe 'Comments API', type: :request do
     # Create Test
     path '/users/{user_id}/posts/{post_id}/comments' do
